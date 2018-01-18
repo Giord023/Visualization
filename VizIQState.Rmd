@@ -9,32 +9,56 @@ output:
     self_contained: no
 ---
 
+```{r message = FALSE, echo = FALSE, warning = FALSE}
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(googleVis, datasets, knitr)
+```
+
+
 ```{r warning=FALSE, echo=FALSE, message=FALSE, results='asis', tidy=FALSE}
-library(googleVis); library(datasets)
 op <- options(gvis.plot.tag = 'chart')
 
+## Load data
 IQ <- c(95.7, 99, 97.4, 97.5, 95.5, 101.6, 103.1, 100.4, 98.4, 98, 95.6, 101.4, 
         99.9, 101.7, 103.2, 102.8, 99.4, 95.3, 103.4, 99.7, 104.3, 100.5, 103.7, 
         94.2, 101.0, 103.4, 102.3, 96.5, 104.2, 102.8, 95.7, 100.7, 100.2, 103.8, 
         101.8, 99.3, 101.2, 101.5, 99.5, 98.4, 102.8, 97.7, 100, 101.1, 103.8, 
         101.9, 101.9, 98.7, 102.9, 102.4)
-sdIQ <- sd(IQ)
-meanIQ <- mean(IQ)
+
+## Compute deviation scores
+sdIQ       <- sd(IQ)
+meanIQ     <- mean(IQ)
 IQ.D.Score <- (IQ - meanIQ) / sdIQ
+
+## Put it all into a data frame 
 DF <- data.frame(state.name, IQ, IQ.D.Score)
-Chart <- gvisGeoChart(data = DF,
+
+## Create the chart
+Chart <- gvisGeoChart(data        = DF,
                       locationvar = "state.name",
-                      colorvar = "IQ.D.Score",
-                      options = list(region = "US",
-                                     displayMode = "regions",
-                                     resolution = "provinces",
-                                     wideth = 600, 
-                                     height = 400,
-                                     title = "Cohen's d of IQ scores"))
+                      colorvar    = "IQ.D.Score",
+                      options     = list(region = "US",
+                                         displayMode = "regions",
+                                         resolution  = "provinces",
+                                         wideth      = 600, 
+                                         height      = 400))
 print(Chart, "chart")
-knitr::kable(DF, 
-             digits = 2, 
-             colnames = c("State", "IQ", "Cohen's d"), 
-             caption = "IQ scores by state")
+# knitr::kable(DF, 
+#              digits   = 2, 
+#              colnames = c("State", 
+#                           "IQ", 
+#                           "Cohen's d"), 
+#              caption  = "IQ scores by state")
+```
+
+\break
+
+```{r echo= FALSE}
+kable(DF, 
+      digits   = 2, 
+      colnames = c("State", 
+                   "IQ", 
+                   "Cohen's d"), 
+      caption  = "IQ scores by state")
 ```
 
