@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="author" content="Casey Giordano" />
+
+<meta name="date" content="2018-01-17" />
+
+<title>Visualizing state IQ</title>
+
+
+
+
+
+
+<link rel="stylesheet" href="VizIQState_files/style.css" type="text/css" />
+
+</head>
+
+<body>
+
+
+
+
+<header>
+<div class="inner">
+<h1 class="title toc-ignore">Visualizing state IQ</h1>
+<h3 class="author">Casey Giordano</h3>
+<h3 class="date">2018-01-17</h3>
+</div>
+</header>
+
+
+
+<div id="content-wrapper">
+  <div class="inner clearfix">
+    <section id="main-content">
+<!-- GeoChart generated in R 3.4.3 by googleVis 0.6.2 package -->
+<!-- Wed Jan 17 22:22:51 2018 -->
+<!-- jsHeader -->
+<script type="text/javascript">
+ 
+// jsData 
+function gvisDataGeoChartID5e85f3636a () {
+var data = new google.visualization.DataTable();
+var datajson =
+[
+ [
+"Alabama",
+-1.714934833
+],
+[
+"Alaska",
+-0.4963118898
+],
+[
+"Arizona",
+-1.087159378
+],
+[
+"Arkansas",
+-1.05023141
+],
+[
+"California",
+-1.788790769
+],
+[
+"Colorado",
+0.4638152779
+],
+[
+"Connecticut",
+1.017734798
+],
+[
+"Delaware",
+0.02067966207
+],
+[
+"Florida",
+-0.7178796977
+],
+[
+"Georgia",
+-0.8655915697
+],
+[
+"Hawaii",
+-1.751862801
+],
+[
+"Idaho",
+0.389959342
+],
+[
+"Illinois",
+-0.1639601779
+],
+[
+"Indiana",
+0.5007432459
+],
+[
+"Iowa",
+1.054662766
+],
+[
+"Kansas",
+0.9069508938
+],
+[
+"Kentucky",
+-0.3486000178
+],
+[
+"Louisiana",
+-1.862646705
+],
+[
+"Maine",
+1.128518702
+],
+[
+"Maryland",
+-0.2378161138
+],
+[
+"Massachusetts",
+1.460870414
+],
+[
+"Michigan",
+0.05760763006
+],
+[
+"Minnesota",
+1.239302606
+],
+[
+"Mississippi",
+-2.268854353
+],
+[
+"Missouri",
+0.24224747
+],
+[
+"Montana",
+1.128518702
+],
+[
+"Nebraska",
+0.7223110539
+],
+[
+"Nevada",
+-1.419511089
+],
+[
+"New Hampshire",
+1.423942446
+],
+[
+"New Jersey",
+0.9069508938
+],
+[
+"New Mexico",
+-1.714934833
+],
+[
+"New York",
+0.131463566
+],
+[
+"North Carolina",
+-0.0531762739
+],
+[
+"North Dakota",
+1.276230574
+],
+[
+"Ohio",
+0.5376712139
+],
+[
+"Oklahoma",
+-0.3855279858
+],
+[
+"Oregon",
+0.316103406
+],
+[
+"Pennsylvania",
+0.4268873099
+],
+[
+"Rhode Island",
+-0.3116720498
+],
+[
+"South Carolina",
+-0.7178796977
+],
+[
+"South Dakota",
+0.9069508938
+],
+[
+"Tennessee",
+-0.9763754736
+],
+[
+"Texas",
+-0.1270322099
+],
+[
+"Utah",
+0.279175438
+],
+[
+"Vermont",
+1.276230574
+],
+[
+"Virginia",
+0.5745991819
+],
+[
+"Washington",
+0.5745991819
+],
+[
+"West Virginia",
+-0.6070957937
+],
+[
+"Wisconsin",
+0.9438788618
+],
+[
+"Wyoming",
+0.7592390218
+] 
+];
+data.addColumn('string','state.name');
+data.addColumn('number','IQ.D.Score');
+data.addRows(datajson);
+return(data);
+}
+ 
+// jsDrawChart
+function drawChartGeoChartID5e85f3636a() {
+var data = gvisDataGeoChartID5e85f3636a();
+var options = {};
+options["width"] = 556;
+options["height"] = 400;
+options["region"] = "US";
+options["displayMode"] = "regions";
+options["resolution"] = "provinces";
+options["wideth"] = 600;
+options["title"] = "Cohen's d of IQ scores";
+
+    var chart = new google.visualization.GeoChart(
+    document.getElementById('GeoChartID5e85f3636a')
+    );
+    chart.draw(data,options);
+    
+
+}
+  
+ 
+// jsDisplayChart
+(function() {
+var pkgs = window.__gvisPackages = window.__gvisPackages || [];
+var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
+var chartid = "geochart";
+  
+// Manually see if chartid is in pkgs (not all browsers support Array.indexOf)
+var i, newPackage = true;
+for (i = 0; newPackage && i < pkgs.length; i++) {
+if (pkgs[i] === chartid)
+newPackage = false;
+}
+if (newPackage)
+  pkgs.push(chartid);
+  
+// Add the drawChart function to the global list of callbacks
+callbacks.push(drawChartGeoChartID5e85f3636a);
+})();
+function displayChartGeoChartID5e85f3636a() {
+  var pkgs = window.__gvisPackages = window.__gvisPackages || [];
+  var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
+  window.clearTimeout(window.__gvisLoad);
+  // The timeout is set to 100 because otherwise the container div we are
+  // targeting might not be part of the document yet
+  window.__gvisLoad = setTimeout(function() {
+  var pkgCount = pkgs.length;
+  google.load("visualization", "1", { packages:pkgs, callback: function() {
+  if (pkgCount != pkgs.length) {
+  // Race condition where another setTimeout call snuck in after us; if
+  // that call added a package, we must not shift its callback
+  return;
+}
+while (callbacks.length > 0)
+callbacks.shift()();
+} });
+}, 100);
+}
+ 
+// jsFooter
+</script>
+<!-- jsChart -->
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartGeoChartID5e85f3636a"></script>
+<!-- divChart -->
+<div id="GeoChartID5e85f3636a" style="width: 556; height: 400;">
+
+</div>
+<table>
+<caption>IQ scores by state</caption>
+<thead>
+<tr class="header">
+<th align="left">state.name</th>
+<th align="right">IQ</th>
+<th align="right">IQ.D.Score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Alabama</td>
+<td align="right">95.7</td>
+<td align="right">-1.71</td>
+</tr>
+<tr class="even">
+<td align="left">Alaska</td>
+<td align="right">99.0</td>
+<td align="right">-0.50</td>
+</tr>
+<tr class="odd">
+<td align="left">Arizona</td>
+<td align="right">97.4</td>
+<td align="right">-1.09</td>
+</tr>
+<tr class="even">
+<td align="left">Arkansas</td>
+<td align="right">97.5</td>
+<td align="right">-1.05</td>
+</tr>
+<tr class="odd">
+<td align="left">California</td>
+<td align="right">95.5</td>
+<td align="right">-1.79</td>
+</tr>
+<tr class="even">
+<td align="left">Colorado</td>
+<td align="right">101.6</td>
+<td align="right">0.46</td>
+</tr>
+<tr class="odd">
+<td align="left">Connecticut</td>
+<td align="right">103.1</td>
+<td align="right">1.02</td>
+</tr>
+<tr class="even">
+<td align="left">Delaware</td>
+<td align="right">100.4</td>
+<td align="right">0.02</td>
+</tr>
+<tr class="odd">
+<td align="left">Florida</td>
+<td align="right">98.4</td>
+<td align="right">-0.72</td>
+</tr>
+<tr class="even">
+<td align="left">Georgia</td>
+<td align="right">98.0</td>
+<td align="right">-0.87</td>
+</tr>
+<tr class="odd">
+<td align="left">Hawaii</td>
+<td align="right">95.6</td>
+<td align="right">-1.75</td>
+</tr>
+<tr class="even">
+<td align="left">Idaho</td>
+<td align="right">101.4</td>
+<td align="right">0.39</td>
+</tr>
+<tr class="odd">
+<td align="left">Illinois</td>
+<td align="right">99.9</td>
+<td align="right">-0.16</td>
+</tr>
+<tr class="even">
+<td align="left">Indiana</td>
+<td align="right">101.7</td>
+<td align="right">0.50</td>
+</tr>
+<tr class="odd">
+<td align="left">Iowa</td>
+<td align="right">103.2</td>
+<td align="right">1.05</td>
+</tr>
+<tr class="even">
+<td align="left">Kansas</td>
+<td align="right">102.8</td>
+<td align="right">0.91</td>
+</tr>
+<tr class="odd">
+<td align="left">Kentucky</td>
+<td align="right">99.4</td>
+<td align="right">-0.35</td>
+</tr>
+<tr class="even">
+<td align="left">Louisiana</td>
+<td align="right">95.3</td>
+<td align="right">-1.86</td>
+</tr>
+<tr class="odd">
+<td align="left">Maine</td>
+<td align="right">103.4</td>
+<td align="right">1.13</td>
+</tr>
+<tr class="even">
+<td align="left">Maryland</td>
+<td align="right">99.7</td>
+<td align="right">-0.24</td>
+</tr>
+<tr class="odd">
+<td align="left">Massachusetts</td>
+<td align="right">104.3</td>
+<td align="right">1.46</td>
+</tr>
+<tr class="even">
+<td align="left">Michigan</td>
+<td align="right">100.5</td>
+<td align="right">0.06</td>
+</tr>
+<tr class="odd">
+<td align="left">Minnesota</td>
+<td align="right">103.7</td>
+<td align="right">1.24</td>
+</tr>
+<tr class="even">
+<td align="left">Mississippi</td>
+<td align="right">94.2</td>
+<td align="right">-2.27</td>
+</tr>
+<tr class="odd">
+<td align="left">Missouri</td>
+<td align="right">101.0</td>
+<td align="right">0.24</td>
+</tr>
+<tr class="even">
+<td align="left">Montana</td>
+<td align="right">103.4</td>
+<td align="right">1.13</td>
+</tr>
+<tr class="odd">
+<td align="left">Nebraska</td>
+<td align="right">102.3</td>
+<td align="right">0.72</td>
+</tr>
+<tr class="even">
+<td align="left">Nevada</td>
+<td align="right">96.5</td>
+<td align="right">-1.42</td>
+</tr>
+<tr class="odd">
+<td align="left">New Hampshire</td>
+<td align="right">104.2</td>
+<td align="right">1.42</td>
+</tr>
+<tr class="even">
+<td align="left">New Jersey</td>
+<td align="right">102.8</td>
+<td align="right">0.91</td>
+</tr>
+<tr class="odd">
+<td align="left">New Mexico</td>
+<td align="right">95.7</td>
+<td align="right">-1.71</td>
+</tr>
+<tr class="even">
+<td align="left">New York</td>
+<td align="right">100.7</td>
+<td align="right">0.13</td>
+</tr>
+<tr class="odd">
+<td align="left">North Carolina</td>
+<td align="right">100.2</td>
+<td align="right">-0.05</td>
+</tr>
+<tr class="even">
+<td align="left">North Dakota</td>
+<td align="right">103.8</td>
+<td align="right">1.28</td>
+</tr>
+<tr class="odd">
+<td align="left">Ohio</td>
+<td align="right">101.8</td>
+<td align="right">0.54</td>
+</tr>
+<tr class="even">
+<td align="left">Oklahoma</td>
+<td align="right">99.3</td>
+<td align="right">-0.39</td>
+</tr>
+<tr class="odd">
+<td align="left">Oregon</td>
+<td align="right">101.2</td>
+<td align="right">0.32</td>
+</tr>
+<tr class="even">
+<td align="left">Pennsylvania</td>
+<td align="right">101.5</td>
+<td align="right">0.43</td>
+</tr>
+<tr class="odd">
+<td align="left">Rhode Island</td>
+<td align="right">99.5</td>
+<td align="right">-0.31</td>
+</tr>
+<tr class="even">
+<td align="left">South Carolina</td>
+<td align="right">98.4</td>
+<td align="right">-0.72</td>
+</tr>
+<tr class="odd">
+<td align="left">South Dakota</td>
+<td align="right">102.8</td>
+<td align="right">0.91</td>
+</tr>
+<tr class="even">
+<td align="left">Tennessee</td>
+<td align="right">97.7</td>
+<td align="right">-0.98</td>
+</tr>
+<tr class="odd">
+<td align="left">Texas</td>
+<td align="right">100.0</td>
+<td align="right">-0.13</td>
+</tr>
+<tr class="even">
+<td align="left">Utah</td>
+<td align="right">101.1</td>
+<td align="right">0.28</td>
+</tr>
+<tr class="odd">
+<td align="left">Vermont</td>
+<td align="right">103.8</td>
+<td align="right">1.28</td>
+</tr>
+<tr class="even">
+<td align="left">Virginia</td>
+<td align="right">101.9</td>
+<td align="right">0.57</td>
+</tr>
+<tr class="odd">
+<td align="left">Washington</td>
+<td align="right">101.9</td>
+<td align="right">0.57</td>
+</tr>
+<tr class="even">
+<td align="left">West Virginia</td>
+<td align="right">98.7</td>
+<td align="right">-0.61</td>
+</tr>
+<tr class="odd">
+<td align="left">Wisconsin</td>
+<td align="right">102.9</td>
+<td align="right">0.94</td>
+</tr>
+<tr class="even">
+<td align="left">Wyoming</td>
+<td align="right">102.4</td>
+<td align="right">0.76</td>
+</tr>
+</tbody>
+</table>
+    </section>
+  </div>
+</div>
+
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
