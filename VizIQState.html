@@ -44,12 +44,12 @@
   <div class="inner clearfix">
     <section id="main-content">
 <!-- GeoChart generated in R 3.4.3 by googleVis 0.6.2 package -->
-<!-- Wed Jan 17 22:33:26 2018 -->
+<!-- Wed Jan 17 22:36:52 2018 -->
 <!-- jsHeader -->
 <script type="text/javascript">
  
 // jsData 
-function gvisDataGeoChartID719451e5456 () {
+function gvisDataGeoChartID7ac2443ca1 () {
 var data = new google.visualization.DataTable();
 var datajson =
 [
@@ -255,14 +255,14 @@ var datajson =
 ] 
 ];
 data.addColumn('string','state.name');
-data.addColumn('number','IQ.D.Score');
+data.addColumn('number','IQ.d.Score');
 data.addRows(datajson);
 return(data);
 }
  
 // jsDrawChart
-function drawChartGeoChartID719451e5456() {
-var data = gvisDataGeoChartID719451e5456();
+function drawChartGeoChartID7ac2443ca1() {
+var data = gvisDataGeoChartID7ac2443ca1();
 var options = {};
 options["width"] = 556;
 options["height"] = 400;
@@ -272,7 +272,7 @@ options["resolution"] = "provinces";
 options["wideth"] = 600;
 
     var chart = new google.visualization.GeoChart(
-    document.getElementById('GeoChartID719451e5456')
+    document.getElementById('GeoChartID7ac2443ca1')
     );
     chart.draw(data,options);
     
@@ -296,9 +296,9 @@ if (newPackage)
   pkgs.push(chartid);
   
 // Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartGeoChartID719451e5456);
+callbacks.push(drawChartGeoChartID7ac2443ca1);
 })();
-function displayChartGeoChartID719451e5456() {
+function displayChartGeoChartID7ac2443ca1() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -321,19 +321,18 @@ callbacks.shift()();
 // jsFooter
 </script>
 <!-- jsChart -->
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartGeoChartID719451e5456"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartGeoChartID7ac2443ca1"></script>
 <!-- divChart -->
-<div id="GeoChartID719451e5456" style="width: 556; height: 400;">
+<div id="GeoChartID7ac2443ca1" style="width: 556; height: 400;">
 
 </div>
-
 <table>
 <caption>IQ scores by state</caption>
 <thead>
 <tr class="header">
 <th align="left">state.name</th>
 <th align="right">IQ</th>
-<th align="right">IQ.D.Score</th>
+<th align="right">IQ.d.Score</th>
 </tr>
 </thead>
 <tbody>

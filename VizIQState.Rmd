@@ -11,7 +11,7 @@ output:
 
 ```{r message = FALSE, echo = FALSE, warning = FALSE}
 if (!require("pacman")) install.packages("pacman")
-pacman::p_load(googleVis, datasets, knitr)
+pacman::p_load(googleVis, datasets, knitr, prettydoc)
 ```
 
 
@@ -28,37 +28,27 @@ IQ <- c(95.7, 99, 97.4, 97.5, 95.5, 101.6, 103.1, 100.4, 98.4, 98, 95.6, 101.4,
 ## Compute deviation scores
 sdIQ       <- sd(IQ)
 meanIQ     <- mean(IQ)
-IQ.D.Score <- (IQ - meanIQ) / sdIQ
+IQ.d.Score <- (IQ - meanIQ) / sdIQ
 
 ## Put it all into a data frame 
-DF <- data.frame(state.name, IQ, IQ.D.Score)
+DF <- data.frame(state.name, IQ, IQ.d.Score)
 
 ## Create the chart
 Chart <- gvisGeoChart(data        = DF,
                       locationvar = "state.name",
-                      colorvar    = "IQ.D.Score",
-                      options     = list(region = "US",
+                      colorvar    = "IQ.d.Score",
+                      options     = list(region      = "US",
                                          displayMode = "regions",
                                          resolution  = "provinces",
                                          wideth      = 600, 
                                          height      = 400))
 print(Chart, "chart")
-# knitr::kable(DF, 
-#              digits   = 2, 
-#              colnames = c("State", 
-#                           "IQ", 
-#                           "Cohen's d"), 
-#              caption  = "IQ scores by state")
+
+## Make a table of the data
+knitr::kable(DF,
+             digits   = 2,
+             colnames = c("State",
+                          "IQ",
+                          "Cohen's d"),
+             caption  = "IQ scores by state")
 ```
-
-\break
-
-```{r echo= FALSE}
-kable(DF, 
-      digits   = 2, 
-      colnames = c("State", 
-                   "IQ", 
-                   "Cohen's d"), 
-      caption  = "IQ scores by state")
-```
-
