@@ -1,7 +1,7 @@
 ---
 title: "Visualizing State-Level Data"
 author: "Casey Giordano"
-date: "`r Sys.Date()`"
+date: "20 January, 2018"
 output:
   prettydoc::html_pretty:
     theme: Cayman
@@ -31,6 +31,7 @@ op <- options(gvis.plot.tag = 'chart')
 
 
 ```{r Define Functions, echo = FALSE}
+
 ## Wrapper function to easily plot the data
 ChartingData <- function(DataFrame, 
                          Data, 
@@ -62,6 +63,7 @@ ChartingData <- function(DataFrame,
   
   ## Print out the chart
   print(Chart, "chart")
+  
 }## END function
 ```
 
