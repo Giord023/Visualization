@@ -1,54 +1,229 @@
 ---
-title: "Visualizing state IQ"
+title: "Visualizing State-Level Data"
 author: "Casey Giordano"
 date: "`r Sys.Date()`"
 output:
   prettydoc::html_pretty:
-    theme: architect
+    theme: Cayman
     highlight: github
     self_contained: no
 ---
+# Introduction
+Let's take a look at variation in state-level data. Specifically, we are interested in the distributions of IQ scores, gross state product, health, crime, and government effectiveness. But, rather than viewing boring old tables, why don't we use some visualizations to illustrate differences? 
 
-```{r message = FALSE, echo = FALSE, warning = FALSE}
+The data contained within this document are drawn exclusively from a published dataset. 
+
+- McDaniel, M. A. (2006). Estimating state IQ: Measurement challenges and preliminary correlates. *Intelligence, 34(6)*, 607-619.  
+
+```{r Load Packages, message = FALSE, echo = FALSE, warning = FALSE}
+
+## Loading packages:
+  ## If you do not have the "pacman" package, it will download it
 if (!require("pacman")) install.packages("pacman")
-pacman::p_load(googleVis, datasets, knitr, prettydoc)
-```
 
+## "pacman" is then used to load all other packages
+  ## If you do not have a package, "pacman" installs it automatically
+pacman::p_load(googleVis, datasets, knitr, prettydoc, tidyverse, corrplot)
 
-```{r warning=FALSE, echo=FALSE, message=FALSE, results='asis', tidy=FALSE}
+## Change the options to plot the charts in an HTML doc
 op <- options(gvis.plot.tag = 'chart')
-
-## Load data
-IQ <- c(95.7, 99, 97.4, 97.5, 95.5, 101.6, 103.1, 100.4, 98.4, 98, 95.6, 101.4, 
-        99.9, 101.7, 103.2, 102.8, 99.4, 95.3, 103.4, 99.7, 104.3, 100.5, 103.7, 
-        94.2, 101.0, 103.4, 102.3, 96.5, 104.2, 102.8, 95.7, 100.7, 100.2, 103.8, 
-        101.8, 99.3, 101.2, 101.5, 99.5, 98.4, 102.8, 97.7, 100, 101.1, 103.8, 
-        101.9, 101.9, 98.7, 102.9, 102.4)
-
-## Compute deviation scores
-sdIQ       <- sd(IQ)
-meanIQ     <- mean(IQ)
-IQ.d.Score <- (IQ - meanIQ) / sdIQ
-
-## Put it all into a data frame 
-DF <- data.frame(state.name, IQ, IQ.d.Score)
-
-## Create the chart
-Chart <- gvisGeoChart(data        = DF,
-                      locationvar = "state.name",
-                      colorvar    = "IQ.d.Score",
-                      options     = list(region      = "US",
-                                         displayMode = "regions",
-                                         resolution  = "provinces",
-                                         wideth      = 600, 
-                                         height      = 400))
-print(Chart, "chart")
-
-## Make a table of the data
-knitr::kable(DF,
-             digits   = 2,
-             colnames = c("State",
-                          "IQ",
-                          "Cohen's d"),
-             caption  = "IQ scores by state")
 ```
+
+
+```{r Define Functions, echo = FALSE}
+## Wrapper function to easily plot the data
+ChartingData <- function(DataFrame, 
+                         Data, 
+                         Color) {
+  ## Purpose:   Plot the data using googleViz package
+  ##
+  ## Args: 
+  ##            DataFrame: Data frame containing states and data to be plotted
+  ##                         Note: Make sure states are the first column
+  ##            Data:      Character value indicating which column to plot
+  ##            Color:     Character or Hex to vizualize the data
+  ## 
+  ## Output: 
+  ##            A plot
+  
+  ## Object to color the chart using their weird convention
+  ColorValue <- paste("{colors:[ '", Color, "' ]}", sep = "")
+  
+  ## Create the chart itself
+  Chart <- gvisGeoChart(data        = DataFrame,
+                        locationvar = as.character(names(DataFrame)[1]),
+                        colorvar    = as.character(Data),
+                        options     = list(region      = "US",
+                                           displayMode = "regions",
+                                           resolution  = "provinces",
+                                           wideth      = 600, 
+                                           height      = 400,
+                                           colorAxis   = ColorValue))
+  
+  ## Print out the chart
+  print(Chart, "chart")
+}## END function
+```
+
+
+```{r Load Data, warning = FALSE, echo = FALSE, message = FALSE}
+## Load data
+## IQ Scores by State, alphebetical order
+IQ <- c( 95.7,  99.0,  97.4,  97.5,  95.5, 101.6, 103.1, 100.4,  98.4,  98.0, 
+         95.6, 101.4,  99.9, 101.7, 103.2, 102.8,  99.4,  95.3, 103.4,  99.7, 
+        104.3, 100.5, 103.7,  94.2, 101.0, 103.4, 102.3,  96.5, 104.2, 102.8,  
+         95.7, 100.7, 100.2, 103.8, 101.8,  99.3, 101.2, 101.5,  99.5,  98.4, 
+        102.8,  97.7, 100.0, 101.1, 103.8, 101.9, 101.9,  98.7, 102.9, 102.4)
+
+## Gross State Product, alphebetical order
+GSP <- c(.028, .047, .032, .027, .040, .041, .049, .059, .032, .036, .036, .029, 
+         .039, .034, .034, .033, .030, .031, .030, .037, .046, .035, .040, .024, 
+         .033, .026, .036, .039, .037, .044, .029, .043, .036, .032, .034, .028, 
+         .033, .035, .035, .030, .034, .033, .036, .032, .032, .040, .039, .025, 
+         .035, .041)
+
+## Health Scores by state, alphebetical order
+Health <- c(-11.9,  -0.8, -1.1, -14.3, 4.9,   12.5, 15.6,  -2.3, -9.9,  -9.5, 
+             15.1,   8.6,  0.3,   0.5, 14.5,   7.2, -7.8, -20.5, 14.3,  -0.9, 
+             16.9,   0.8, 23.3, -20.7, -3.3,   4.0, 11.2,  -5.5, 22.2,   9.0,   
+              7.5,  -0.4, -5.6,  14.5,  1.8, -11.2,  7.9,   3.2, 11.6, -15.3,  
+              8.9, -13.8, -4.6,  18.2, 19.8,   6.8, 11.5, -10.1, 12.7,   4.3)
+
+## Violent crimes, alphebetical order
+Crime <- c(.004, .006, .005, .005, .006, .004, .003, .006, .007, .005, .003, 
+           .002, .006, .003, .003, .004, .003, .006, .001, .007, .005, .005, 
+           .003, .003, .005, .003, .003, .006, .002, .004, .007, .005, .005, 
+           .001, .003, .005, .003, .004, .003, .008, .002, .007, .006, .002, 
+           .001, .003, .003, .003, .002, .003)
+
+## Government Effectiveness Ratings, alphebetical order
+Govt <- c(1.3, 3.3, 4.3, 3.0, 2.7, 4.0, 3.0, 6.7, 4.7, 5.0, 2.7, 4.3, 5.0, 4.3, 
+          6.3, 5.7, 6.7, 5.3, 4.3, 6.3, 4.3, 7.3, 6.3, 4.0, 7.0, 4.3, 5.7, 4.0, 
+          3.3, 5.0, 3.3, 3.7, 5.3, 5.0, 6.0, 3.3, 4.3, 6.3, 3.0, 6.3, 4.7, 4.7, 
+          6.0, 8.0, 5.3, 7.7, 7.7, 3.7, 5.3, 3.0)
+
+## Data Frame with the each state's raw data
+  ## state.name comes from package "datasets" and already has states in 
+  ## alphabetical order
+RawData <- data.frame(state.name, 
+                      IQ, 
+                      GSP, 
+                      Health, 
+                      Crime, 
+                      Govt)
+
+## Convert raw data into z-scores
+ZScores <- apply(X      = RawData[, -1],
+                 MARGIN = 2,
+                 FUN    = function(RawData) scale(x      = RawData,
+                                                  center = TRUE,
+                                                  scale  = TRUE))
+## Turn z-scores into data frame
+ZScores <- data.frame(state.name, 
+                      ZScores)
+
+## Correlation of state-level variables
+CorrelationMatrix <- matrix(c(1.00, 0.28,  0.75, -0.58, 0.34,
+                              0.28, 1.00,  0.34,  0.14, 0.10,
+                              0.75, 0.34,  1.00, -0.66, 0.12,
+                             -0.58, 0.14, -0.66,  1.00, 0.02,
+                              0.34, 0.10,  0.12,  0.02, 1.00), 
+                            nrow = 5, 
+                            ncol = 5)
+
+## Names of the variables in order that they appear
+VariableNames <- c("IQ", 
+                   "GSP", 
+                   "Health", 
+                   "Crime", 
+                   "Govt")
+
+## Name the column
+dimnames(CorrelationMatrix) <- list(VariableNames, 
+                                    VariableNames)
+```
+
+# Visualizing IQ
+```{r Plot IQ, warning = FALSE, echo = FALSE, message = FALSE, results = 'asis'}
+## Plots the IQ data in a green color
+
+ChartingData(DataFrame = ZScores, 
+             Data      = "IQ",
+             Color     = "Green")
+```
+
+# Visualizing Gross State Product
+```{r Plot GSP, warning = FALSE, echo = FALSE, message = FALSE, results = 'asis'}
+
+## Plots GSP in a blue color
+ChartingData(DataFrame = ZScores,
+             Data      = "GSP",
+             Color     = "Blue")
+```
+
+# Visualizing Health
+```{r Plot Health, warning = FALSE, echo = FALSE, message = FALSE, results = 'asis'}
+
+## Plots the health data in a teal color
+ChartingData(DataFrame = ZScores,
+             Data      = "Health",
+             Color     = "teal")
+```
+
+# Visualizing Crime
+```{r Plot Crime, warning = FALSE, echo = FALSE, message = FALSE, results = 'asis'}
+
+## Plots the crime data in a red color
+ChartingData(DataFrame = ZScores,
+             Data      = "Crime",
+             Color     = "red")
+```
+
+# Visualizing Government Effectiveness
+```{r Plot Govt, warning = FALSE, echo = FALSE, message = FALSE, results = 'asis'}
+
+## Plots the government effectiveness data in a maroon color
+ChartingData(DataFrame = ZScores,
+             Data      = "Govt",
+             Color     = "Maroon")
+```
+
+# Putting it all together
+The visualizations above show the variation of state-level variables but not the covariation. How correlated are these variables?
+
+
+```{r Correlation Visualization, echo = FALSE}
+
+## Makes a visualizations of the correlations rather than viewing raw numbers
+corrplot(corr   = CorrelationMatrix,
+         type   = "upper",
+         diag   = FALSE,
+         tl.col = "black")
+```
+
+
+# Raw data used in the visualizations
+## Z-scores for each state
+```{r Z-Score Tables, echo = FALSE}
+
+## Table the raw data for people that want to see it
+kable(x         = ZScores, 
+      caption   = "State-level variables", 
+      digits    = 2,
+      col.names = c("State", 
+                    "IQ", 
+                    "GSP", 
+                    "Health", 
+                    "Crime", 
+                    "Gov't"))
+```
+
+## Intercorrelations among state variables
+```{r Correlation Matrix, echo = FALSE}
+
+## Table the correlation matrix
+kable(x       = CorrelationMatrix,
+      caption = "Intercorrelations among state-level variables",
+      digits  = 2)
+```
+
