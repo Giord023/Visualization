@@ -3,7 +3,6 @@ title: "Visualizing State-Level Data"
 author: "Casey Giordano"
 date: "20 January, 2018"
 output:
-  # html_document:
   prettydoc::html_pretty:
     theme: cayman 
     highlight: github

@@ -4,127 +4,40 @@
 
 <head>
 
-<meta charset="utf-8" />
+<meta charset="utf-8">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <meta name="author" content="Casey Giordano" />
 
 
 <title>Visualizing State-Level Data</title>
 
-<script src="VizIQState_files/jquery-1.11.3/jquery.min.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="VizIQState_files/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
-<script src="VizIQState_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
-<script src="VizIQState_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
-<script src="VizIQState_files/bootstrap-3.3.5/shim/respond.min.js"></script>
-<script src="VizIQState_files/navigation-1.1/tabsets.js"></script>
-<link href="VizIQState_files/highlightjs-9.12.0/default.css" rel="stylesheet" />
-<script src="VizIQState_files/highlightjs-9.12.0/highlight.js"></script>
-
-<style type="text/css">code{white-space: pre;}</style>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
-<script type="text/javascript">
-if (window.hljs) {
-  hljs.configure({languages: []});
-  hljs.initHighlightingOnLoad();
-  if (document.readyState && document.readyState === "complete") {
-    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
-  }
-}
-</script>
 
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
 
+
+<link rel="stylesheet" href="index_files/style.css" type="text/css" />
 
 </head>
 
 <body>
 
-<style type = "text/css">
-.main-container {
-  max-width: 940px;
-  margin-left: auto;
-  margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
-}
-img {
-  max-width:100%;
-  height: auto;
-}
-.tabbed-pane {
-  padding-top: 12px;
-}
-button.code-folding-btn:focus {
-  outline: none;
-}
-</style>
 
 
 
-<div class="container-fluid main-container">
-
-<!-- tabsets -->
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-</script>
-
-<!-- code folding -->
+<section class="page-header">
+<h1 class="title toc-ignore project-name">Visualizing State-Level Data</h1>
+<h4 class="author project-author">Casey Giordano</h4>
+<h4 class="date project-date">20 January, 2018</h4>
+</section>
 
 
 
-
-
-
-<div class="fluid-row" id="header">
-
-
-
-<h1 class="title toc-ignore">Visualizing State-Level Data</h1>
-<h4 class="author"><em>Casey Giordano</em></h4>
-<h4 class="date"><em>20 January, 2018</em></h4>
-
-</div>
-
-
+<section class="main-content">
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
 <p>Let’s take a look at variation in state-level data. Specifically, we are interested in the distributions of IQ scores, gross state product, health, crime, and government effectiveness. But, rather than viewing boring old tables, why don’t we use some visualizations to illustrate differences?</p>
@@ -136,12 +49,12 @@ $(document).ready(function () {
 <div id="visualizing-iq" class="section level1">
 <h1>Visualizing IQ</h1>
 <!-- GeoChart generated in R 3.4.3 by googleVis 0.6.2 package -->
-<!-- Wed Jan 24 14:15:15 2018 -->
+<!-- Fri Jan 26 16:41:51 2018 -->
 <!-- jsHeader -->
 <script type="text/javascript">
  
 // jsData 
-function gvisDataGeoChartID4717e14f942 () {
+function gvisDataGeoChartID35557373fee4 () {
 var data = new google.visualization.DataTable();
 var datajson =
 [
@@ -353,8 +266,8 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartGeoChartID4717e14f942() {
-var data = gvisDataGeoChartID4717e14f942();
+function drawChartGeoChartID35557373fee4() {
+var data = gvisDataGeoChartID35557373fee4();
 var options = {};
 options["width"] = 556;
 options["height"] = 400;
@@ -365,7 +278,7 @@ options["wideth"] = 600;
 options["colorAxis"] = {colors:[ 'Green' ]};
 
     var chart = new google.visualization.GeoChart(
-    document.getElementById('GeoChartID4717e14f942')
+    document.getElementById('GeoChartID35557373fee4')
     );
     chart.draw(data,options);
     
@@ -389,9 +302,9 @@ if (newPackage)
   pkgs.push(chartid);
   
 // Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartGeoChartID4717e14f942);
+callbacks.push(drawChartGeoChartID35557373fee4);
 })();
-function displayChartGeoChartID4717e14f942() {
+function displayChartGeoChartID35557373fee4() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -414,21 +327,21 @@ callbacks.shift()();
 // jsFooter
 </script>
 <!-- jsChart -->
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartGeoChartID4717e14f942"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartGeoChartID35557373fee4"></script>
 <!-- divChart -->
-<div id="GeoChartID4717e14f942" style="width: 556; height: 400;">
+<div id="GeoChartID35557373fee4" style="width: 556; height: 400;">
 
 </div>
 </div>
 <div id="visualizing-gross-state-product" class="section level1">
 <h1>Visualizing Gross State Product</h1>
 <!-- GeoChart generated in R 3.4.3 by googleVis 0.6.2 package -->
-<!-- Wed Jan 24 14:15:15 2018 -->
+<!-- Fri Jan 26 16:41:51 2018 -->
 <!-- jsHeader -->
 <script type="text/javascript">
  
 // jsData 
-function gvisDataGeoChartID4717ff93f69 () {
+function gvisDataGeoChartID355559ba5798 () {
 var data = new google.visualization.DataTable();
 var datajson =
 [
@@ -640,8 +553,8 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartGeoChartID4717ff93f69() {
-var data = gvisDataGeoChartID4717ff93f69();
+function drawChartGeoChartID355559ba5798() {
+var data = gvisDataGeoChartID355559ba5798();
 var options = {};
 options["width"] = 556;
 options["height"] = 400;
@@ -652,7 +565,7 @@ options["wideth"] = 600;
 options["colorAxis"] = {colors:[ 'Blue' ]};
 
     var chart = new google.visualization.GeoChart(
-    document.getElementById('GeoChartID4717ff93f69')
+    document.getElementById('GeoChartID355559ba5798')
     );
     chart.draw(data,options);
     
@@ -676,9 +589,9 @@ if (newPackage)
   pkgs.push(chartid);
   
 // Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartGeoChartID4717ff93f69);
+callbacks.push(drawChartGeoChartID355559ba5798);
 })();
-function displayChartGeoChartID4717ff93f69() {
+function displayChartGeoChartID355559ba5798() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -701,21 +614,21 @@ callbacks.shift()();
 // jsFooter
 </script>
 <!-- jsChart -->
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartGeoChartID4717ff93f69"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartGeoChartID355559ba5798"></script>
 <!-- divChart -->
-<div id="GeoChartID4717ff93f69" style="width: 556; height: 400;">
+<div id="GeoChartID355559ba5798" style="width: 556; height: 400;">
 
 </div>
 </div>
 <div id="visualizing-health" class="section level1">
 <h1>Visualizing Health</h1>
 <!-- GeoChart generated in R 3.4.3 by googleVis 0.6.2 package -->
-<!-- Wed Jan 24 14:15:15 2018 -->
+<!-- Fri Jan 26 16:41:51 2018 -->
 <!-- jsHeader -->
 <script type="text/javascript">
  
 // jsData 
-function gvisDataGeoChartID471149dd36a () {
+function gvisDataGeoChartID355575225de6 () {
 var data = new google.visualization.DataTable();
 var datajson =
 [
@@ -927,8 +840,8 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartGeoChartID471149dd36a() {
-var data = gvisDataGeoChartID471149dd36a();
+function drawChartGeoChartID355575225de6() {
+var data = gvisDataGeoChartID355575225de6();
 var options = {};
 options["width"] = 556;
 options["height"] = 400;
@@ -939,7 +852,7 @@ options["wideth"] = 600;
 options["colorAxis"] = {colors:[ 'teal' ]};
 
     var chart = new google.visualization.GeoChart(
-    document.getElementById('GeoChartID471149dd36a')
+    document.getElementById('GeoChartID355575225de6')
     );
     chart.draw(data,options);
     
@@ -963,9 +876,9 @@ if (newPackage)
   pkgs.push(chartid);
   
 // Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartGeoChartID471149dd36a);
+callbacks.push(drawChartGeoChartID355575225de6);
 })();
-function displayChartGeoChartID471149dd36a() {
+function displayChartGeoChartID355575225de6() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -988,21 +901,21 @@ callbacks.shift()();
 // jsFooter
 </script>
 <!-- jsChart -->
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartGeoChartID471149dd36a"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartGeoChartID355575225de6"></script>
 <!-- divChart -->
-<div id="GeoChartID471149dd36a" style="width: 556; height: 400;">
+<div id="GeoChartID355575225de6" style="width: 556; height: 400;">
 
 </div>
 </div>
 <div id="visualizing-crime" class="section level1">
 <h1>Visualizing Crime</h1>
 <!-- GeoChart generated in R 3.4.3 by googleVis 0.6.2 package -->
-<!-- Wed Jan 24 14:15:15 2018 -->
+<!-- Fri Jan 26 16:41:51 2018 -->
 <!-- jsHeader -->
 <script type="text/javascript">
  
 // jsData 
-function gvisDataGeoChartID4717cc4693 () {
+function gvisDataGeoChartID35557c4cd8a7 () {
 var data = new google.visualization.DataTable();
 var datajson =
 [
@@ -1214,8 +1127,8 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartGeoChartID4717cc4693() {
-var data = gvisDataGeoChartID4717cc4693();
+function drawChartGeoChartID35557c4cd8a7() {
+var data = gvisDataGeoChartID35557c4cd8a7();
 var options = {};
 options["width"] = 556;
 options["height"] = 400;
@@ -1226,7 +1139,7 @@ options["wideth"] = 600;
 options["colorAxis"] = {colors:[ 'red' ]};
 
     var chart = new google.visualization.GeoChart(
-    document.getElementById('GeoChartID4717cc4693')
+    document.getElementById('GeoChartID35557c4cd8a7')
     );
     chart.draw(data,options);
     
@@ -1250,9 +1163,9 @@ if (newPackage)
   pkgs.push(chartid);
   
 // Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartGeoChartID4717cc4693);
+callbacks.push(drawChartGeoChartID35557c4cd8a7);
 })();
-function displayChartGeoChartID4717cc4693() {
+function displayChartGeoChartID35557c4cd8a7() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -1275,21 +1188,21 @@ callbacks.shift()();
 // jsFooter
 </script>
 <!-- jsChart -->
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartGeoChartID4717cc4693"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartGeoChartID35557c4cd8a7"></script>
 <!-- divChart -->
-<div id="GeoChartID4717cc4693" style="width: 556; height: 400;">
+<div id="GeoChartID35557c4cd8a7" style="width: 556; height: 400;">
 
 </div>
 </div>
 <div id="visualizing-government-effectiveness" class="section level1">
 <h1>Visualizing Government Effectiveness</h1>
 <!-- GeoChart generated in R 3.4.3 by googleVis 0.6.2 package -->
-<!-- Wed Jan 24 14:15:15 2018 -->
+<!-- Fri Jan 26 16:41:51 2018 -->
 <!-- jsHeader -->
 <script type="text/javascript">
  
 // jsData 
-function gvisDataGeoChartID4714f345452 () {
+function gvisDataGeoChartID35559617003 () {
 var data = new google.visualization.DataTable();
 var datajson =
 [
@@ -1501,8 +1414,8 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartGeoChartID4714f345452() {
-var data = gvisDataGeoChartID4714f345452();
+function drawChartGeoChartID35559617003() {
+var data = gvisDataGeoChartID35559617003();
 var options = {};
 options["width"] = 556;
 options["height"] = 400;
@@ -1513,7 +1426,7 @@ options["wideth"] = 600;
 options["colorAxis"] = {colors:[ 'Maroon' ]};
 
     var chart = new google.visualization.GeoChart(
-    document.getElementById('GeoChartID4714f345452')
+    document.getElementById('GeoChartID35559617003')
     );
     chart.draw(data,options);
     
@@ -1537,9 +1450,9 @@ if (newPackage)
   pkgs.push(chartid);
   
 // Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartGeoChartID4714f345452);
+callbacks.push(drawChartGeoChartID35559617003);
 })();
-function displayChartGeoChartID4714f345452() {
+function displayChartGeoChartID35559617003() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -1562,16 +1475,16 @@ callbacks.shift()();
 // jsFooter
 </script>
 <!-- jsChart -->
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartGeoChartID4714f345452"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartGeoChartID35559617003"></script>
 <!-- divChart -->
-<div id="GeoChartID4714f345452" style="width: 556; height: 400;">
+<div id="GeoChartID35559617003" style="width: 556; height: 400;">
 
 </div>
 </div>
 <div id="putting-it-all-together" class="section level1">
 <h1>Putting it all together</h1>
 <p>The visualizations above show the variation of state-level variables but not the covariation. How correlated are these variables?</p>
-<p><img src="VizIQState_files/figure-html/Correlation%20Visualization-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/Correlation%20Visualization-1.png" /><!-- --></p>
 </div>
 <div id="raw-data-used-in-the-visualizations" class="section level1">
 <h1>Raw data used in the visualizations</h1>
@@ -2052,24 +1965,9 @@ callbacks.shift()();
 </table>
 </div>
 </div>
+</section>
 
 
-
-
-</div>
-
-<script>
-
-// add bootstrap table styles to pandoc tables
-function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
-}
-$(document).ready(function () {
-  bootstrapStylePandocTables();
-});
-
-
-</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
